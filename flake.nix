@@ -21,7 +21,9 @@
           buildInputs = [
             openssl
             pkg-config
-            (rust-bin.selectLatestNightlyWith (toolchain: toolchain.minimal))
+            (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
+              extensions = [ "rust-src" "rust-analyzer" ];
+            }))
           ];
 
           shellHooks = ''
